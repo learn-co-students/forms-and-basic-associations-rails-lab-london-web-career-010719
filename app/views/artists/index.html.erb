@@ -1,2 +1,11 @@
 <h1>Artists#index</h1>
 <p>Find me in app/views/artists/index.html.erb</p>
+
+<% @artists.map do |artist| %>
+<h1><%= artist.name%></h1>
+<p>Songs: </p>
+<% artist.songs.each do |song|%>
+<%= song.title %>
+  <% end %>
+  <br>
+<% end %>
