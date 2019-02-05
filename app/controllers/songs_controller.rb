@@ -9,6 +9,8 @@ class SongsController < ApplicationController
 
   def new
     @song = Song.new
+    @genres = Genre.all.sort_by{|g| g.name}
+    @artists = Artist.all.sort_by{|g| g.name}
   end
 
   def create
@@ -47,7 +49,6 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:title)
+    params.require(:song).permit(:artist_name, :genre_id, :title, note_contents: [])
   end
 end
-
